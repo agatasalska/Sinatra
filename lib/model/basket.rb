@@ -1,12 +1,24 @@
 module Shop
   class Basket
-    attr_reader :id, :products 
+    attr_reader :product_id, :quantity
 
-    @@id = 0
+    def initialize(product_id:, quantity:)
+      @product_id = product_id
+      @quantity = quantity
+    end
 
-    def initialize(id)
-      @id = id
-      @products = []
+    def fetch_product
+      FetchProduct.new.call(product_id)
+    end
+
+    def total_net_price
+      product = fetch_product
+      product.price * quantity
+    end
+
+    def total_gros_price
+      product = fetch_product
+      product.price * quantity * 1.23
     end
   end
 end
