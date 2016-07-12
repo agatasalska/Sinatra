@@ -5,7 +5,8 @@ module Shop
         {
           product: b.fetch_product,
           quantity: b.quantity,
-          total_price: b.total_price
+          total_net_price: b.total_net_price,
+          total_gros_price: b.total_gros_price
         }
       end
     end

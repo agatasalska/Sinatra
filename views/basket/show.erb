@@ -5,6 +5,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Total netto price</th>
       <th>Total price</th>
     </tr>
   </thead>
@@ -14,7 +15,8 @@
         <td><%= b[:product].name %></td>
         <td><%= b[:product].price %></td>
         <td><%= b[:quantity] %></td>
-        <td><%= b[:total_price] %></td>
+        <td><%= b[:total_net_price] %></td>
+        <td><%= b[:total_gros_price] %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,6 +25,6 @@
       <td></td>
       <td></td>
       <td>Summary:</td>
-      <td><%= basket.map{|x| x[:total_price]}.reduce(:+)%></td>
+      <td><%= basket.map{|x| x[:total_gros_price]}.reduce(:+)%></td>
   </tfoot>
 </table>
