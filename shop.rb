@@ -1,12 +1,17 @@
 require "bundler/setup"
 require "sinatra/base"
 
+Dir["./lib/**/*.rb"].each{|file| require file}
+
 module Shop
   PRODUCTS = [
     Product.new('cheese', 10),
     Product.new('milk', 5),
     Product.new('butter', 15)
   ]
+
+  WAREHOUSE = []
+  BASKET = []
 
   class App < Sinatra::Base
     get "/" do
