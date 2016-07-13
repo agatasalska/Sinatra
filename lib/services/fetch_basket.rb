@@ -1,12 +1,12 @@
 module Shop
   class FetchBasket
     def call
-      BASKET.map do |b|
+      BASKET.map do |basket_item|
         {
-          product: b.fetch_product,
-          quantity: b.quantity,
-          total_net_price: b.total_net_price,
-          total_gros_price: b.total_gros_price
+          product: basket_item.fetch_product,
+          quantity: basket_item.quantity,
+          total_net_price: basket_item.total_net_price,
+          total_gros_price: basket_item.total_gros_price
         }
       end
     end

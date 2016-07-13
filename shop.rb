@@ -5,9 +5,9 @@ Dir["./lib/**/*.rb"].each{|file| require file}
 
 module Shop
   PRODUCTS = [
-    Product.new(id: 1, name: "cheese",price: 10),
-    Product.new(id: 2, name: "milk", price: 5),
-    Product.new(id: 3, name: "butter", price: 15)
+    Product.new("cheese", 10),
+    Product.new("milk", 5),
+    Product.new("butter", 15)
   ]
 
   WAREHOUSE = []
@@ -15,7 +15,7 @@ module Shop
 
   class App < Sinatra::Base
     get "/" do
-      products = FetchProducts.new.call
+      products = FetchBasketItemList.new.call
       erb :"products/index", locals: { products: products, title: "Products" }
     end
 
@@ -30,7 +30,7 @@ module Shop
     end
 
     post "/basket" do
-      AddToBasket.new(params).call
+      AddItemToBasket.new(params).call
       redirect "/"
     end
   end
