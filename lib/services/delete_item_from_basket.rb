@@ -1,13 +1,13 @@
 require_relative './fetch_item_from_stock'
 
 module Shop
-  class DeleteItemFromWarehouse
+  class DeleteItemFromBasket
     def initialize(params)
-      @product_id = params.fetch(:product_id).to_i
+      @product_id = params.fetch(:product_id)
     end
 
     def call
-      item = FetchItemFromStock.new.call(@product_id, WAREHOUSE)
+      item = FetchItemFromStock.new.call(@product_id, BASKET)
 
       return unless item
 
@@ -18,9 +18,9 @@ module Shop
 
     def reduce_stock_quantity
       if item.quantity >1
-        warehouse_item.quantity -= 1
+        item.quantity -= 1
       else
-        WAREHOUSE.delete(item)
+        BASKET.delete(item)
       end
     end
   end

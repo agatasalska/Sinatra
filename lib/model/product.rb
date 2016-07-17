@@ -5,12 +5,13 @@ module Shop
     @@id = 0
 
     def initialize(name, price)
-      @id = set_id
+      @id = set_id.to_i
       @name = name
       @price = price
     end
 
     private
+
     def set_id
       @@id += 1
     end

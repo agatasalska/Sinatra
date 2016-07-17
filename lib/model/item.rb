@@ -26,6 +26,7 @@ module Shop
     end
 
     private
+
     def set_id
       @@id +=1
     end
